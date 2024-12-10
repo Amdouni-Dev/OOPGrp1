@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function Animal(nom, couleur) {
+  this.nom = nom;
+  this.couleur = couleur;
+}
+
+function Chien(...props) {
+  Animal.apply(this, props);
+  this.race = "Berger Allemand";
+}
+
+const bergerAllemand = new Chien("Chien", "Noir");
+console.log(bergerAllemand.nom);   // Chien
+console.log(bergerAllemand.couleur); // Noir
+console.log(bergerAllemand.race);    // Berger Allemand
+
+
+    </script>
+</body>
+</html>

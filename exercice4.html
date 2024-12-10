@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+  // Définition de la fonction constructeur pour la classe Animal
+  function Animal(nom, couleur) {
+    // Initialisation des propriétés nom et couleur pour chaque instance d'Animal
+    this.nom = nom;
+    this.couleur = couleur;
+  }
+
+  // Ajout d'une méthode générique parler à Animal via son prototype
+  Animal.prototype.parler = function () {
+    console.log("Cet animal fait un bruit générique"); // Message par défaut pour tous les animaux
+  };
+
+  // Définition de la fonction constructeur pour la classe Chat
+  function Chat(...props) {
+    // Appel du constructeur Animal pour initialiser les propriétés héritées
+    Animal.apply(this, props); // Permet de passer les arguments à Animal
+  }
+
+  // Configuration de l'héritage :
+  // Chat hérite des méthodes et propriétés d'Animal via son prototype
+  Chat.prototype = Object.create(Animal.prototype);
+
+  // Ajout d'une méthode spécifique à Chat
+  Chat.prototype.miauler = function () {
+    console.log("Miaou!"); // Message spécifique au chat
+  };
+
+  // Création d'une instance de Chat avec un nom et une couleur
+  const chatPersan = new Chat("Chat Persan", "Blanc");
+
+  // Appel de la méthode parler héritée d'Animal
+  chatPersan.parler(); // Affiche : Cet animal fait un bruit générique
+
+  // Appel de la méthode miauler spécifique à Chat
+  chatPersan.miauler(); // Affiche : Miaou!
+</script>
+
+</body>
+</html>
